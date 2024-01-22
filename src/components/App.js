@@ -6,6 +6,7 @@ import ToyContainer from "./ToyContainer";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [toysList, setToysList] = useState([])
 
   function handleClick() {
     setShowForm((showForm) => !showForm);
@@ -14,11 +15,15 @@ function App() {
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm 
+                    toysList={toysList}
+                    setToysList={setToysList}/> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer />
+      <ToyContainer 
+        toysList={toysList}
+        setToysList={setToysList}/>
     </>
   );
 }
